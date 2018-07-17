@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+  color: #666;
+  font-family: 'Raleway', sans-serif;
+}
+
+button, input {
+  font-family: 'Raleway', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.btn-link {
+  color: #666;
+}
+
+.btn-no-border {
+  border: none;
+}
+
+.btn-no-padding {
+  padding: 0;
+}
+
+.App {
+  max-width: 600px;
+  margin: 8px auto;
+}
+
+/* Header */
+.App-header {
+
+}
+
+.App-header-row div:last-child {
+  text-align: right;
+}
+
+.App-header-logo {
+  text-align: center;
+}
+
+.Section-top-heading-main {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.Section-top-heading-sub {
+  text-align: center;
+  font-size: 1.3rem;
+}
+/* Header */
+
+/* LogInSignUp */
+.Section-LogInSignUpForm {
+  margin: 20px 0;
+}
+
+.LogInSignUpForm {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.LogInSignUpFormSignInButton {
+  width: 100%;
+}
+
+.LogInSignUpFormForgotPasswordContainer {
+  margin: auto;
+}
+
+.LogInSignUpFormAlreadyRegisteredContainer {
+  margin: auto;
+}
+
+.LogInSignUpFormAlreadyRememberedContainer {
+  margin: auto;
+}
+
+.LogInSignUpFormForgotPassword {
+  float: right;
+}
+
+.LogInSignUpFormAlreadyRegistered {
+  float: right;
+}
+
+.LogInSignUpFormAlreadyRemembered {
+  float: right;
+}
+/* LogInSignUp */
+
+/* Contest users */
+.Container-contest-users {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.InputGroup-member-search {
+  margin: auto;
+  margin-top: 20%;
+}
+
+.thumb-image-small {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  border: 2px solid #00c071;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.Article-user-profile {
+  text-align: center;
+}
+
+.Article-user-profile p {
+  margin-bottom: 0;
+}
+
+.Span-profile-id {
+  color: #999;
+}
+
+.IMG-vs-icon {
+  display: block;
+  width: 50px;
+  margin: auto;
+  margin-top: 20%;
+}
+/* Contest users */
+
+/* Footer */
+.App-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-width: 600px;
+  height: 30px;
+  text-align: center;
+}
+/* Footer */
