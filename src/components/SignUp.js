@@ -1,7 +1,8 @@
 import React from 'react';
-import config from '../config';
-import axios from 'axios';
 import { Button, Form, FormGroup, FormFeedback, Input, Label, Col } from 'reactstrap';
+
+//adapters
+import profileadapter from '../adapters/profileAdapter';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -24,14 +25,13 @@ class SignUp extends React.Component {
     handleEmailBlur(e) {
         const inputEmail = document.getElementById('inputEmail');
         if (inputEmail.value !== '') {
-            axios.post(config.emailExistsUrl, {
+            profileadapter.checkEmailExists({
                 email: inputEmail.value,
-            })
-                .then(res => {
-                    const data = res.data;
-                    const emailExists = data.responseContent;
-                    this.setState({emailExists: emailExists, emailIsValid: !emailExists});
-                });
+            }, emailExists => {
+                this.setState({emailExists: emailExists, emailIsValid: !emailExists});
+            }, error => {
+                console.log(`Error chacking email existence (${error.response})`);
+            });
         } else {
             this.setState({emailExists: false});
         }
