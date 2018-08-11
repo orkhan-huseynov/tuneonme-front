@@ -1,7 +1,7 @@
-const baseUrl = 'http://tuneon.me';
-
 let config = {
-    emailExistsUrl: `${baseUrl}/api/email_exists`,
+    getTokenUrl: `/oauth/token`,
+    emailExistsUrl: `/api/email_exists`,
+    storeProfileUrl: `/api/profile`,
 };
 
 export default config;

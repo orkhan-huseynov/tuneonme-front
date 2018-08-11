@@ -48,7 +48,10 @@ class App extends Component {
 
     handleSignedUpClick(signUpSuccessful) {
         if (signUpSuccessful) {
-            this.setState({logInSignUpComponentDisplayMode: 'SignUpSuccess'});
+            this.setState({
+                logInSignUpComponentDisplayMode: 'SignUpSuccess',
+                isLoggedIn: true,
+            });
         }
     }
 
@@ -66,7 +69,7 @@ class App extends Component {
 
         let mainContainer = null;
 
-        if (!isLoggedIn) {
+        if (!isLoggedIn || logInSignUpComponentDisplayMode === 'SignUpSuccess') {
             mainContainer = <LogInSignUp displayMode={logInSignUpComponentDisplayMode}
                                          onAlreadyRegisteredClick={this.handleAlreadyRegisteredClick}
                                          onAlreadyRememberedClick={this.handleAlreadyRememberedClick}

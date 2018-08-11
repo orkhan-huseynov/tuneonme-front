@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, Form, FormGroup, FormFeedback, Input, Label, Col } from 'reactstrap';
+import { Button, Form, FormGroup, FormFeedback, Input, Label, Col, Alert } from 'reactstrap';
 
-//adapters
-import profileadapter from '../adapters/profileAdapter';
+// adapters
+import ProfileAdapter from '../adapters/profileAdapter';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -19,25 +19,29 @@ class SignUp extends React.Component {
             emailExists: undefined,
             passwordIsValid: undefined,
             confirmPasswordIsValid: undefined,
+            signUpFailed: undefined,
         }
     }
 
-    handleEmailBlur(e) {
+    async handleEmailBlur(e) {
         const inputEmail = document.getElementById('inputEmail');
         if (inputEmail.value !== '') {
-            profileadapter.checkEmailExists({
-                email: inputEmail.value,
-            }, emailExists => {
+            // API call to check if email exists
+            try {
+                const emailExists = await ProfileAdapter.checkEmailExists({email: inputEmail.value});
                 this.setState({emailExists: emailExists, emailIsValid: !emailExists});
-            }, error => {
-                console.log(`Error chacking email existence (${error.response})`);
-            });
+            } catch (error) {
+                console.log(`Error checking email existence (${error.statusText})`);
+                this.setState({emailExists: false});
+            }
         } else {
             this.setState({emailExists: false});
         }
     }
 
-    handleSignUpClick(e) {
+    async handleSignUpClick(e) {
+        e.preventDefault();
+
         const inputName = document.getElementById('inputName');
         const inputLastName = document.getElementById('inputLastName');
         const inputEmail = document.getElementById('inputEmail');
@@ -84,12 +88,26 @@ class SignUp extends React.Component {
         }
 
         if (validationSuccessful) {
-            //TODO: add api call
-            let signUpSuccessful = true;
+            // API call to store profile
+            try {
+                const signUpSuccessful = await ProfileAdapter.storeProfile({
+                    name: inputName.value,
+                    lastname: inputLastName.value,
+                    email: inputEmail.value,
+                    password: inputPassword.value,
+                });
 
-            this.props.onSignUpClick(signUpSuccessful);
+                if (signUpSuccessful === true) {
+                    this.setState({signUpFailed: false});
+                    this.props.onSignUpClick(true);
+                } else {
+                    this.setState({signUpFailed: true});
+                }
+            } catch (error) {
+                console.log(error);
+                this.setState({signUpFailed: true});
+            }
         }
-        e.preventDefault();
     }
 
     handleAlreadyRegisteredClick(e) {
@@ -101,6 +119,12 @@ class SignUp extends React.Component {
         return (
             <section className="Section-LogInSignUpForm">
                 <Form className="LogInSignUpForm" noValidate>
+                    {(this.state.signUpFailed === true) ?
+                        <Alert color="danger" className="text-center">
+                        We encountered an error signing you up. Oh dear.. Please do let us know if this persists!
+                        </Alert>
+                        : ''
+                    }
                     <FormGroup>
                         <Label for="inputName" className="sr-only">Name</Label>
                         <Input type="text" id="inputName" placeholder="Name" name="name"

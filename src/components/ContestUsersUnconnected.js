@@ -4,10 +4,10 @@ import UserSmall from './UserSmall';
 import vs_icon from '../images/vs_icon.png';
 
 class ContestUsersUnconnected extends React.Component {
-    constructor(props){
-        super(props);
-
-    }
+    // constructor(props){
+    //     super(props);
+    //
+    // }
 
     componentDidMount() {
         //TODO add api call

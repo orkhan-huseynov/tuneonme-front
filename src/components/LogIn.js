@@ -1,7 +1,11 @@
 import React from 'react';
-import { Button, Form, FormGroup, FormFeedback, Input, Label, Col } from 'reactstrap';
+import { Button, Form, FormGroup, FormFeedback, Input, Label, Col, Alert } from 'reactstrap';
+
+// adapters
+import AuthAdapter from '../adapters/authAdapter';
 
 class LogIn extends React.Component {
+
     constructor(props) {
         super(props);
 
@@ -11,14 +15,19 @@ class LogIn extends React.Component {
         this.state = {
             emailIsValid: undefined,
             passwordIsValid: undefined,
+            logInFailed: undefined,
+            isLoading: undefined,
         }
     }
 
     handleSignInClick(e) {
-        let inputEmail = document.getElementById('inputEmail');
-        let inputPassword = document.getElementById('inputPassword');
+        e.preventDefault();
+
+        const inputEmail = document.getElementById('inputEmail');
+        const inputPassword = document.getElementById('inputPassword');
 
         let validationSuccessful = true;
+        this.setState({logInFailed: undefined});
 
         if (inputEmail.value === '' || !(/\S+@\S+\.\S+/.test(inputEmail.value))) {
             this.setState({emailIsValid: false});
@@ -34,12 +43,19 @@ class LogIn extends React.Component {
         }
 
         if (validationSuccessful) {
-            //TODO: add api call
-            let authSuccessful = true;
-
-            this.props.onSignInClick(authSuccessful);
+            this.setState({isLoading: true});
+            // API call
+            AuthAdapter.getToken(inputEmail.value, inputPassword.value)
+                .then(() => {
+                    this.setState({logInFailed: false});
+                    this.props.onSignInClick(true);
+                })
+                .catch(() => this.setState({
+                    logInFailed: true,
+                    isLoading: false,
+                }));
         }
-        e.preventDefault();
+
     }
 
     handleForgotPasswordClick(e) {
@@ -51,19 +67,31 @@ class LogIn extends React.Component {
         return (
             <section className="Section-LogInSignUpForm">
                 <Form className="LogInSignUpForm" id="LogInForm" noValidate>
+                    {(this.state.logInFailed === true) ?
+                        <Alert color="danger" className="text-center">
+                            Nope. Those are not correct <span role="img" aria-label="thinking face">🤔</span> Please try to remember and give it another shot!
+                        </Alert>
+                        : ''
+                    }
                     <FormGroup>
                         <Label for="inputEmail" className="sr-only">Email address</Label>
-                        <Input type="email" id="inputEmail" placeholder="Email address" name="email" valid={this.state.emailIsValid} required autoFocus />
-                        <FormFeedback>Valid email is required</FormFeedback>
+                        <Input type="email" id="inputEmail" placeholder="Email address" name="email"
+                               valid={this.state.emailIsValid === true}
+                               invalid={this.state.emailIsValid === false}
+                               required autoFocus />
+                        <FormFeedback>We need your real email address</FormFeedback>
                     </FormGroup>
                     <FormGroup>
                         <Label for="inputPassword" className="sr-only">Password</Label>
-                        <Input type="password" id="inputPassword" placeholder="Password" name="password" valid={this.state.passwordIsValid} required />
-                        <FormFeedback>Password is required</FormFeedback>
+                        <Input type="password" id="inputPassword" placeholder="Password" name="password"
+                               valid={this.state.passwordIsValid === true}
+                               invalid={this.state.passwordIsValid === false}
+                               required />
+                        <FormFeedback>...and please give us your password <span role="img" aria-label="smiling face with sunglasses">😎</span></FormFeedback>
                     </FormGroup>
                     <FormGroup row>
                         <Col sm={6}>
-                            <Button onClick={this.handleSignInClick} color="success" className="LogInSignUpFormSignInButton">Sign In</Button>
+                            <Button disabled={this.state.isLoading} onClick={this.handleSignInClick} color="success" className="LogInSignUpFormSignInButton">Sign In</Button>
                         </Col>
                         <Col sm={6} className="LogInSignUpFormForgotPasswordContainer">
                             <Button onClick={this.handleForgotPasswordClick} className="btn-link LogInSignUpFormForgotPassword">Forgot your password?</Button>
@@ -73,6 +101,7 @@ class LogIn extends React.Component {
             </section>
         );
     }
+
 }
 
 export default LogIn;

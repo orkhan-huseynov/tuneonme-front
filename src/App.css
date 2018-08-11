@@ -64,6 +64,11 @@ button {
   margin: 20px 0;
 }
 
+.Section-LogInSignUpForm .welcomeCard {
+    background: rgba(255, 229, 229, 0.41);
+    margin-top: 40px;
+}
+
 .LogInSignUpForm {
   max-width: 400px;
   margin: 0 auto;

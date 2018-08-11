@@ -1,19 +1,36 @@
 import config from '../config';
-import axios from 'axios';
+import apiController from '../controllers/apiController';
 
-let profileAdapter = {
-    checkEmailExists: (postData, fulfill, reject) => {
-        axios.post(config.emailExistsUrl, postData)
-            .then(res => {
-                const data = res.data;
-                const emailExists = data.responseContent;
+class ProfileAdapter {
 
-                fulfill(emailExists);
-            })
-            .catch(err => {
-                reject(err);
-            });
+    static async checkEmailExists(postData) {
+        try {
+            const res = await apiController.post(config.emailExistsUrl, postData);
+            const data = res.data;
+            const emailExists = data.responseContent;
+
+            return Promise.resolve(emailExists);
+        } catch (error) {
+            return Promise.reject(error.response);
+        }
     }
-};
 
-export default profileAdapter;
+    static async storeProfile(postData) {
+        try {
+            const response = await apiController.post(config.storeProfileUrl, postData);
+            const responseData = response.data;
+
+            if (responseData.responseCode === 1) {
+                return Promise.resolve(true);
+            } else {
+                console.log(responseData.responseContent);
+                return Promise.resolve(false);
+            }
+        } catch (error) {
+            return Promise.reject(error.response);
+        }
+    }
+
+}
+
+export default ProfileAdapter;

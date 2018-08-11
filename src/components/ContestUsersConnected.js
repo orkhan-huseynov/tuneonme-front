@@ -4,9 +4,9 @@ import UserSmall from './UserSmall';
 import vs_icon from '../images/vs_icon.png';
 
 class ContestUsersConnected extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         return (

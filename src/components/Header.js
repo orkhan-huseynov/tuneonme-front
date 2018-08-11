@@ -49,7 +49,7 @@ class Header extends React.Component {
                     </div>
                 </div>
                 <div className="App-header-logo">
-                    <img src={logo} alt="logo" />
+                    <a><img src={logo} alt="logo" /></a>
                 </div>
                 {sectionTop}
             </header>
