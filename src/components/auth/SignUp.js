@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, FormFeedback, Input, Label, Col, Alert } from 'reactstrap';
 
 // adapters
-import ProfileAdapter from '../adapters/profileAdapter';
+import ProfileAdapter from '../../adapters/profileAdapter';
 
 class SignUp extends React.Component {
     constructor(props) {

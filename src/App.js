@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import LogInSignUp from './components/LogInSignUp';
+import StartupSplash from './components/StartupSplash';
+import LogInSignUp from './components/auth/LogInSignUp';
 import ContestUsers from './components/ContestUsers';
 import './App.css';
+
+// adapters
+import authAdapter from './adapters/authAdapter';
 
 class App extends Component {
     constructor(props) {
@@ -20,6 +24,7 @@ class App extends Component {
 
         this.state = {
             isLoggedIn: false,
+            isCheckingStoredToken: true,
             logInSignUpComponentDisplayMode: 'LogIn',
         };
     }
@@ -63,30 +68,42 @@ class App extends Component {
         this.setState({logInSignUpComponentDisplayMode: 'LogIn'});
     }
 
-    render() {
-        const isLoggedIn = this.state.isLoggedIn;
-        const logInSignUpComponentDisplayMode = this.state.logInSignUpComponentDisplayMode;
+    componentDidMount() {
+        // check existing token and update state
+        authAdapter.checkToken()
+            .then(tokenIsValid => this.setState({'isLoggedIn': tokenIsValid}))
+            .catch(() => {this.setState({'isLoggedIn': false})})
+            .finally(() => this.setState({'isCheckingStoredToken': false}));
+    }
 
+    render() {
         let mainContainer = null;
 
-        if (!isLoggedIn || logInSignUpComponentDisplayMode === 'SignUpSuccess') {
-            mainContainer = <LogInSignUp displayMode={logInSignUpComponentDisplayMode}
-                                         onAlreadyRegisteredClick={this.handleAlreadyRegisteredClick}
-                                         onAlreadyRememberedClick={this.handleAlreadyRememberedClick}
-                                         onForgotPasswordClick={this.handleForgotPasswordClick}
-                                         onSignedInClick={this.handleSignedInClick}
-                                         onSignedUpClick={this.handleSignedUpClick}
-                                         onTuneOnMeClick={this.handleTuneOnMeClick}
+        if (this.state.isCheckingStoredToken) {
+            mainContainer = <StartupSplash/>
+        } else if (this.state.isLoggedIn === false || this.state.logInSignUpComponentDisplayMode === 'SignUpSuccess') {
+            mainContainer = <LogInSignUp
+                                displayMode={this.state.logInSignUpComponentDisplayMode}
+                                onAlreadyRegisteredClick={this.handleAlreadyRegisteredClick}
+                                onAlreadyRememberedClick={this.handleAlreadyRememberedClick}
+                                onForgotPasswordClick={this.handleForgotPasswordClick}
+                                onSignedInClick={this.handleSignedInClick}
+                                onSignedUpClick={this.handleSignedUpClick}
+                                onTuneOnMeClick={this.handleTuneOnMeClick}
                             />
         } else {
             mainContainer = <ContestUsers/>
         }
 
+
+
         return (
             <div className="App">
-                <Header isLoggedIn={isLoggedIn}
-                        onSignUpClick={this.handleSignUpClick}
-                        onSignOutClick={this.handleSignOutClick} />
+                <Header
+                    isLoggedIn={this.state.isLoggedIn}
+                    onSignUpClick={this.handleSignUpClick}
+                    onSignOutClick={this.handleSignOutClick}
+                />
 
                 {mainContainer}
 

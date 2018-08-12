@@ -1,7 +1,7 @@
 class localStorageController {
 
     static get(key) {
-        return localStorage.getItem(atob(key));
+        return localStorage.getItem(btoa(key));
     }
 
     static set(key, value) {

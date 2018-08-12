@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, FormFeedback, Input, Label, Col, Alert } from 'reactstrap';
 
 // adapters
-import AuthAdapter from '../adapters/authAdapter';
+import AuthAdapter from '../../adapters/authAdapter';
 
 class LogIn extends React.Component {
 

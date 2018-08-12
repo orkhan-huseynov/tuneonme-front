@@ -16,13 +16,26 @@ class AuthAdapter {
             });
 
             const responseData = await response.data;
+            console.log(responseData.access_token);
             localStorageController.set('access_token', responseData.access_token);
             localStorageController.set('refresh_token', responseData.refresh_token);
 
             return Promise.resolve(responseData);
 
         } catch (error) {
-            return Promise.reject(error.response)
+            return Promise.reject(error.response);
+        }
+    }
+
+    static async checkToken() {
+        try {
+            const response = await apiController.get(config.checkTokenUrl);
+            const responseData = await response.data;
+
+            return Promise.resolve(responseData.responseCode === 1);
+        } catch (error) {
+            console.log(error);
+            return Promise.reject(error.response);
         }
     }
 

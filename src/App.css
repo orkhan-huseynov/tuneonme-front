@@ -34,6 +34,16 @@ button {
   margin: 8px auto;
 }
 
+/* Startup Splash */
+.Section-StartupSplash {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+}
+/* Startup Splash */
+
 /* Header */
 .App-header {
 
