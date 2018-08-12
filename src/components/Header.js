@@ -19,14 +19,13 @@ class Header extends React.Component {
     }
 
     render() {
-        const isLoggedIn = this.props.isLoggedIn;
         let signUpOutButtons = null;
         let sectionTop = null;
 
-        if (isLoggedIn) {
+        if (this.props.isLoggedIn) {
             signUpOutButtons = <Button color="success" onClick={this.handleSignOutClick}>Sign Out</Button>;
         } else {
-            signUpOutButtons = <Button color="success" onClick={this.handleSignUpClick}>Sign Up</Button>;
+            signUpOutButtons = <Button color="success" onClick={this.handleSignUpClick} disabled={this.props.isCheckingStoredToken}>Sign Up</Button>;
             sectionTop = (
                 <section className="Section-top">
                     <h1 className="Section-top-heading-main">Tune On Me</h1>

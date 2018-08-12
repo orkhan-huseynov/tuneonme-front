@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import default_profile from '../images/default_profile.png';
+import default_profile from '../../images/default_profile.png';
 
 class UserSmall extends React.Component {
     constructor(props) {

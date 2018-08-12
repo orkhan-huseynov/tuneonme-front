@@ -10,7 +10,7 @@ class ContestUsers extends React.Component {
             userId: 0,
             friendUserId: 0,
             isConnected: false,
-        }
+        };
     }
 
     componentDidMount() {

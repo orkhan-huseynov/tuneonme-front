@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Row, Col, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import UserSmall from './UserSmall';
-import vs_icon from '../images/vs_icon.png';
+import vs_icon from '../../images/vs_icon.png';
 
 class ContestUsersUnconnected extends React.Component {
     // constructor(props){

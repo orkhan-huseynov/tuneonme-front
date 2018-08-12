@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import StartupSplash from './components/StartupSplash';
 import LogInSignUp from './components/auth/LogInSignUp';
-import ContestUsers from './components/ContestUsers';
+import ContestContainer from './components/contest/ContestContainer';
 import './App.css';
 
 // adapters
@@ -92,7 +92,7 @@ class App extends Component {
                                 onTuneOnMeClick={this.handleTuneOnMeClick}
                             />
         } else {
-            mainContainer = <ContestUsers/>
+            mainContainer = <ContestContainer/>
         }
 
 
@@ -101,6 +101,7 @@ class App extends Component {
             <div className="App">
                 <Header
                     isLoggedIn={this.state.isLoggedIn}
+                    isCheckingStoredToken={this.state.isCheckingStoredToken}
                     onSignUpClick={this.handleSignUpClick}
                     onSignOutClick={this.handleSignOutClick}
                 />

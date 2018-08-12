@@ -16,7 +16,6 @@ class AuthAdapter {
             });
 
             const responseData = await response.data;
-            console.log(responseData.access_token);
             localStorageController.set('access_token', responseData.access_token);
             localStorageController.set('refresh_token', responseData.refresh_token);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import UserSmall from './UserSmall';
-import vs_icon from '../images/vs_icon.png';
+import vs_icon from '../../images/vs_icon.png';
 
 class ContestUsersConnected extends React.Component {
     // constructor(props) {
