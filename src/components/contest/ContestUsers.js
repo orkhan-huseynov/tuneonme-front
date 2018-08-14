@@ -6,27 +6,27 @@ class ContestUsers extends React.Component {
     constructor(props) {
         super(props);
 
+        this.handleUserProfileClick = this.handleUserProfileClick.bind(this);
+
         this.state = {
-            userId: 0,
-            friendUserId: 0,
-            isConnected: false,
+
         };
     }
 
-    componentDidMount() {
-        //TODO add api call
+    handleUserProfileClick() {
+        this.props.onUserProfileClick();
     }
 
     render() {
-        const isConnected = this.state.isConnected;
+        const user = this.props.user;
 
-        if (isConnected) {
+        if (user.hasActiveConnections) {
             return (
-                <ContestUsersConnected userId={this.state.userId} />
+                <ContestUsersConnected user={user} />
             );
         } else {
             return (
-                <ContestUsersUnconnected userId={this.state.userId} friendUserId={this.state.friendUserId} />
+                <ContestUsersUnconnected user={user} onUserProfileClick={this.handleUserProfileClick} />
             );
         }
     }

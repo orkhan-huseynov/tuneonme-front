@@ -131,6 +131,13 @@ button {
   background-size: cover;
   border: 2px solid #00c071;
 }
+.thumb-image-large {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    border: 2px solid #00c071;
+}
 
 .img-circle {
   border-radius: 50%;
@@ -155,6 +162,23 @@ button {
   margin-top: 20%;
 }
 /* Contest users */
+
+/* Profile */
+.Container-profile {
+    margin-top: 30px;
+}
+.profile-user-name {
+    margin-top: 10px;
+}
+.select-photo-icon {
+    position: absolute;
+    margin-top: -55px;
+    margin-left: 40px;
+    background-color: #e1e1e1;
+    border-radius: 20px;
+    padding: 9px;
+}
+/* Profile */
 
 /* Footer */
 .App-footer {

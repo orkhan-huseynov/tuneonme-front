@@ -4,14 +4,18 @@ import UserSmall from './UserSmall';
 import vs_icon from '../../images/vs_icon.png';
 
 class ContestUsersUnconnected extends React.Component {
-    // constructor(props){
-    //     super(props);
-    //
-    // }
+    constructor(props){
+        super(props);
+
+        this.handleUserProfileClick = this.handleUserProfileClick.bind(this);
+    }
 
     componentDidMount() {
-        //TODO add api call
 
+    }
+
+    handleUserProfileClick() {
+        this.props.onUserProfileClick();
     }
 
     render() {
@@ -32,7 +36,7 @@ class ContestUsersUnconnected extends React.Component {
                         <img className="IMG-vs-icon" src={vs_icon} alt="vs" />
                     </Col>
                     <Col>
-                        <UserSmall userId={this.props.userId}/>
+                        <UserSmall user={this.props.user} onUserClick={this.handleUserProfileClick} />
                     </Col>
                 </Row>
             </Container>

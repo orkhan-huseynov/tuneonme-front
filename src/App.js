@@ -8,11 +8,13 @@ import './App.css';
 
 // adapters
 import authAdapter from './adapters/authAdapter';
+import profileAdapter from './adapters/profileAdapter';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
+        // LogInSingnUp methods
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
         this.handleForgotPasswordClick = this.handleForgotPasswordClick.bind(this);
         this.handleAlreadyRegisteredClick = this.handleAlreadyRegisteredClick.bind(this);
@@ -22,13 +24,20 @@ class App extends Component {
         this.handleSignOutClick = this.handleSignOutClick.bind(this);
         this.handleTuneOnMeClick = this.handleTuneOnMeClick.bind(this);
 
+        // ContestContainer methods
+        this.handleUserProfileClick = this.handleUserProfileClick.bind(this);
+        this.handleMainLogoClick = this.handleMainLogoClick.bind(this);
+
         this.state = {
             isLoggedIn: false,
             isCheckingStoredToken: true,
             logInSignUpComponentDisplayMode: 'LogIn',
+            contestContainerComponentDisplayMode: 'contest',
+            currentUser: undefined,
         };
     }
 
+    // LogInSingnUp methods
     handleSignUpClick() {
         this.setState({logInSignUpComponentDisplayMode: 'SignUp'});
     }
@@ -68,12 +77,25 @@ class App extends Component {
         this.setState({logInSignUpComponentDisplayMode: 'LogIn'});
     }
 
+    // ContestContainer methods
+    handleMainLogoClick() {
+        this.setState({contestContainerComponentDisplayMode: 'contest'});
+    }
+
+    handleUserProfileClick() {
+        this.setState({contestContainerComponentDisplayMode: 'profile'});
+    }
+
     componentDidMount() {
         // check existing token and update state
+        let isLoggedIn = false;
         authAdapter.checkToken()
-            .then(tokenIsValid => this.setState({'isLoggedIn': tokenIsValid}))
-            .catch(() => {this.setState({'isLoggedIn': false})})
-            .finally(() => this.setState({'isCheckingStoredToken': false}));
+            .then(tokenIsValid => isLoggedIn = tokenIsValid)
+            .then(() => profileAdapter.getCurrentUser().then(user => this.setState({currentUser: user})))
+            .finally(() => this.setState({
+                isCheckingStoredToken: false,
+                isLoggedIn: isLoggedIn,
+            }));
     }
 
     render() {
@@ -92,7 +114,11 @@ class App extends Component {
                                 onTuneOnMeClick={this.handleTuneOnMeClick}
                             />
         } else {
-            mainContainer = <ContestContainer/>
+            mainContainer = <ContestContainer
+                                user={this.state.currentUser}
+                                displayMode={this.state.contestContainerComponentDisplayMode}
+                                onUserProfileClick={this.handleUserProfileClick}
+                            />
         }
 
 
@@ -102,6 +128,7 @@ class App extends Component {
                 <Header
                     isLoggedIn={this.state.isLoggedIn}
                     isCheckingStoredToken={this.state.isCheckingStoredToken}
+                    onMainLogoClick={this.handleMainLogoClick}
                     onSignUpClick={this.handleSignUpClick}
                     onSignOutClick={this.handleSignOutClick}
                 />

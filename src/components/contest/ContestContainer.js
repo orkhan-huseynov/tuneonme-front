@@ -1,5 +1,6 @@
 import React from 'react';
 import ContestUsers from './ContestUsers';
+import Profile from './Profile';
 import { Container, Row, Col } from 'reactstrap';
 
 class ContestContainer extends React.Component {
@@ -7,26 +8,51 @@ class ContestContainer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.handleUserProfileClick = this.handleUserProfileClick.bind(this);
+
         this.state = {
 
         };
     }
 
-    render() {
-        return (
-            <Container>
-                <Row>
-                    <Col>
-                        <ContestUsers/>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
+    handleUserProfileClick() {
+        this.props.onUserProfileClick();
+    }
 
-                    </Col>
-                </Row>
-            </Container>
-        );
+    render() {
+        switch (this.props.displayMode) {
+            case 'contest':
+                return (
+                    <Container>
+                        <Row>
+                            <Col>
+                                <ContestUsers
+                                    user={this.props.user}
+                                    onUserProfileClick={this.handleUserProfileClick}
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+
+                            </Col>
+                        </Row>
+                    </Container>
+                );
+            case 'profile':
+                return (
+                    <Container>
+                        <Row>
+                            <Col>
+                                <Profile user={this.props.user} />
+                            </Col>
+                        </Row>
+                    </Container>
+                );
+            default:
+                return false;
+        }
+
     }
 
 }

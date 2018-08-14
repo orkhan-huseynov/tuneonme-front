@@ -6,8 +6,18 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
 
+        this.handleMainLogoClick = this.handleMainLogoClick.bind(this);
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
         this.handleSignOutClick = this.handleSignOutClick.bind(this);
+    }
+
+    handleMainLogoClick(e) {
+        e.preventDefault();
+
+        if (this.props.isCheckingStoredToken) {
+            return;
+        }
+        this.props.onMainLogoClick();
     }
 
     handleSignUpClick() {
@@ -48,7 +58,7 @@ class Header extends React.Component {
                     </div>
                 </div>
                 <div className="App-header-logo">
-                    <a><img src={logo} alt="logo" /></a>
+                    <a href="" onClick={this.handleMainLogoClick}><img src={logo} alt="logo" /></a>
                 </div>
                 {sectionTop}
             </header>
