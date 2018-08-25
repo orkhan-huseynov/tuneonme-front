@@ -15,7 +15,7 @@ class AuthAdapter {
                 scope: '',
             });
 
-            const responseData = await response.data;
+            const responseData = response.data;
             localStorageController.set('access_token', responseData.access_token);
             localStorageController.set('refresh_token', responseData.refresh_token);
 
@@ -29,11 +29,26 @@ class AuthAdapter {
     static async checkToken() {
         try {
             const response = await apiController.get(config.checkTokenUrl);
-            const responseData = await response.data;
+            const responseData = response.data;
 
             return Promise.resolve(responseData.responseCode === 1);
         } catch (error) {
             console.log(error);
+            return Promise.reject(error.response);
+        }
+    }
+
+    static async logOut() {
+        try {
+            const response = await apiController.post(config.logoutUrl);
+            const responseData = response.data;
+
+            localStorageController.delete('access_token');
+            localStorageController.delete('refresh_token');
+
+            return Promise.resolve(responseData.responseCode === 1);
+        } catch (error) {
+            console.log(error.response);
             return Promise.reject(error.response);
         }
     }

@@ -9,7 +9,7 @@ if (accessToken !== undefined) {
         baseURL: baseUrl,
         headers: {
             'Accept': 'application/json',
-            'Authorization': `Bearer ${localStorageController.get('access_token')}`,
+            'Authorization': `Bearer ${accessToken}`,
         }
     });
 } else {

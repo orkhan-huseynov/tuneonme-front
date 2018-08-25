@@ -20,6 +20,8 @@ class ContestUsers extends React.Component {
     render() {
         const user = this.props.user;
 
+        if (user === undefined) { return null; }
+
         if (user.hasActiveConnections) {
             return (
                 <ContestUsersConnected user={user} />

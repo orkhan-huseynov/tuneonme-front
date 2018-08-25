@@ -1,10 +1,11 @@
 let config = {
     // General
-    storagePath: 'http://tuneon.me/storage/images',
+    storagePath: 'http://tuneon.me/storage/images/',
 
     // Auth
     getTokenUrl: '/oauth/token',
     checkTokenUrl: '/api/check-token',
+    logoutUrl: '/api/logout',
 
     // Profile
     emailExistsUrl: '/api/email_exists',

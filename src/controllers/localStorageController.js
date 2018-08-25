@@ -8,6 +8,9 @@ class localStorageController {
         return localStorage.setItem(btoa(key), value);
     }
 
+    static delete(key) {
+        return localStorage.removeItem(btoa(key));
+    }
 }
 
 export default localStorageController;

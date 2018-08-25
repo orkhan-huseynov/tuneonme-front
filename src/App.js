@@ -10,6 +10,8 @@ import './App.css';
 import authAdapter from './adapters/authAdapter';
 import profileAdapter from './adapters/profileAdapter';
 
+import localStorageController from './controllers/localStorageController';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +58,10 @@ class App extends Component {
 
     handleSignedInClick(authSuccessful) {
         if (authSuccessful) {
-            this.setState({isLoggedIn: true});
+            profileAdapter.getCurrentUser().then(user => this.setState({
+                currentUser: user,
+                isLoggedIn: true,
+            }));
         }
     }
 
@@ -70,7 +75,21 @@ class App extends Component {
     }
 
     handleSignOutClick() {
-        this.setState({isLoggedIn: false});
+
+        authAdapter.logOut()
+            .then(logoutSuccesfull => {
+                if (logoutSuccesfull !== false) {
+                    this.setState({isLoggedIn: false})
+                } else {
+                    console.log('Logout error'); // TODO: add user-friendly error
+                }
+            })
+            .catch(console.log('Logout error!')) // TODO: add user-friendly error
+            .finally(() => this.setState({
+                currentUser: undefined,
+                isLoggedIn: false,
+            }))
+
     }
 
     handleTuneOnMeClick() {
