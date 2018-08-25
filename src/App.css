@@ -167,8 +167,11 @@ button {
 .Container-profile {
     margin-top: 30px;
 }
+.profile-user-details {
+    margin-top: 20px;
+}
 .profile-user-name {
-    margin-top: 10px;
+    display: inline-block;
 }
 .select-photo-icon {
     position: absolute;
@@ -177,6 +180,46 @@ button {
     background-color: #e1e1e1;
     border-radius: 20px;
     padding: 9px;
+}
+.profile_pic_container {
+    margin: 0 auto;
+    padding: 3px;
+}
+.profile_pic_container.spin_loader {
+    background-image: linear-gradient(-120deg, #00c071 50%, rgba(0, 0, 0, 0) 50%),
+    linear-gradient(0deg, #00c071 50%, rgba(0, 0, 0, 0) 50%);
+    border-radius: 50%;
+    width: 156px;
+    height: 156px;
+    padding: 3px;
+    animation:spin 2s linear infinite;
+}
+.fa-username-edit {
+    position: absolute;
+    margin-top: -2px;
+    margin-left: 5px;
+}
+
+.img-circle.thumb-image {
+    border: 2px solid #00c071;
+}
+
+.profile_pic_container.spin_loader .img-circle {
+    animation:spin-reverse 2s linear infinite;
+}
+
+.profile-user-edit-name-surname-container {
+    margin-bottom: 20px;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+@keyframes spin-reverse{
+    from{transform:rotate(360deg)}
+    to{transform:rotate(0deg)}
 }
 /* Profile */
 

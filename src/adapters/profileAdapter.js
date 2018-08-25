@@ -1,5 +1,6 @@
 import config from '../config';
 import apiController from '../controllers/apiController';
+import fileApiController from '../controllers/fileApiController';
 
 class ProfileAdapter {
 
@@ -38,6 +39,38 @@ class ProfileAdapter {
 
             if (responseData.responseCode === 1) {
                 return Promise.resolve(responseData.responseContent);
+            } else {
+                console.log(responseData.responseContent);
+                return Promise.resolve(false);
+            }
+        } catch (error) {
+            return Promise.reject(error.response);
+        }
+    }
+
+    static async storeProfilePicture(postData) {
+        try {
+            const response = await fileApiController.post(config.storeProfilePictureUrl, postData);
+            const responseData = response.data;
+
+            if (responseData.responseCode === 1) {
+                return Promise.resolve(responseData.responseContent);
+            } else {
+                console.log(responseData.responseContent);
+                return Promise.resolve(false);
+            }
+        } catch (error) {
+            return Promise.reject(error.response);
+        }
+    }
+
+    static async saveProfileNameLastname(postData) {
+        try {
+            const response = await apiController.put(config.saveNameLastnameUrl, postData);
+            const responseData = response.data;
+
+            if (responseData.responseCode === 1) {
+                return Promise.resolve(true);
             } else {
                 console.log(responseData.responseContent);
                 return Promise.resolve(false);
