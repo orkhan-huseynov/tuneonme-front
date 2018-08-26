@@ -2,25 +2,27 @@ import axios from 'axios';
 import localStorageController from "./localStorageController";
 
 const baseUrl = 'http://tuneon.me';
-const accessToken = localStorageController.get('access_token');
-let apiController;
-if (accessToken !== undefined) {
-    apiController = axios.create({
-        baseURL: baseUrl,
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
-        }
-    });
-} else {
-    apiController = axios.create({
-        baseURL: baseUrl,
-        headers: {
-            'Accept': 'application/json',
-        }
-    });
-}
 
+let apiController = axios.create({
+    baseURL: baseUrl,
+    headers: {
+        'Accept': 'application/json',
+    }
+});
+
+apiController.interceptors.request.use(
+    config => {
+        const accessToken = localStorageController.get('access_token');
+        if (accessToken !== undefined) {
+            config.headers.Authorization = `Bearer ${accessToken}`;
+        }
+
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
 
 apiController.interceptors.response.use(
     response => response,
