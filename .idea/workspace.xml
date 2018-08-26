@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c228b14d-ba78-4286-be76-9cd2680e372e" name="Default" comment="update packages" />
+    <list default="true" id="c228b14d-ba78-4286-be76-9cd2680e372e" name="Default" comment="update packages">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -26,7 +29,7 @@
         <counts>
           <entry key="css" value="433" />
           <entry key="env" value="62" />
-          <entry key="gitignore" value="5" />
+          <entry key="gitignore" value="13" />
           <entry key="js" value="14080" />
           <entry key="txt" value="237" />
         </counts>
@@ -37,14 +40,14 @@
           <entry key="CSS" value="433" />
           <entry key="HTML" value="1" />
           <entry key="JavaScript" value="14079" />
-          <entry key="PLAIN_TEXT" value="242" />
+          <entry key="PLAIN_TEXT" value="250" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="4" />
           <entry key="env" value="3" />
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="js" value="61" />
           <entry key="json" value="2" />
           <entry key="svg" value="1" />
@@ -57,8 +60,14 @@
           <entry key="CSS" value="4" />
           <entry key="JSON" value="2" />
           <entry key="JavaScript" value="61" />
-          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="PLAIN_TEXT" value="4" />
           <entry key="SVG" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.local" value="2" />
+          <entry key="git.branch.merge" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -90,14 +99,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/contest/Profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="162" selection-start-line="162" selection-end-line="162" />
+            <state relative-caret-position="291">
+              <caret line="174" column="22" lean-forward="true" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -193,6 +211,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="podavan" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -213,7 +236,6 @@
         <option value="$PROJECT_DIR$/src/components/SignUpSuccess.js" />
         <option value="$PROJECT_DIR$/src/components/SignUp.js" />
         <option value="$PROJECT_DIR$/src/components/LogIn.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/components/Footer.js" />
         <option value="$PROJECT_DIR$/src/components/StartupSplash.js" />
         <option value="$PROJECT_DIR$/src/components/contest/Contest.js" />
@@ -232,6 +254,7 @@
         <option value="$PROJECT_DIR$/src/controllers/apiController.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -337,15 +360,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/contest" />
-      <recent name="$PROJECT_DIR$/src/components/auth" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/controllers" />
       <recent name="$PROJECT_DIR$/src/images" />
       <recent name="$PROJECT_DIR$/public/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/contest" />
+      <recent name="$PROJECT_DIR$/src/components/auth" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -481,12 +504,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150940000" />
+    <option name="totallyTimeSpent" value="151169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1726568" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1726568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -499,7 +523,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5081043" side_tool="true" weight="0.25139666" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49048626" visible="true" weight="0.32465753" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49048626" visible="true" weight="0.32465753" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -608,13 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -824,11 +841,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/contest/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="162" selection-start-line="162" selection-end-line="162" />
+        <state relative-caret-position="291">
+          <caret line="174" column="22" lean-forward="true" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
         </state>
       </provider>
     </entry>
