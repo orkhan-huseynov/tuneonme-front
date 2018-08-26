@@ -30,6 +30,8 @@ class Profile extends React.Component {
             isEditingName: false,
             inputProfileNameIsValid: undefined,
             isSavingProfileName: false,
+            totalLevels: undefined,
+            levelsWon: undefined,
         }
     }
 
@@ -116,6 +118,24 @@ class Profile extends React.Component {
             .finally(() => this.setState({isUploadingProfilePicture: false}));
     }
 
+    componentDidMount() {
+        profileAdapter.getLevelsStats()
+            .then(responseResult => {
+                if (responseResult !== false) {
+                    this.setState({
+                        totalLevels: responseResult.totalLevels,
+                        levelsWon: responseResult.levelsWon,
+                    })
+                } else {
+                    console.log('Somthing went wrong');
+                }
+            })
+            .catch(() => {
+                console.log('Something went wrong');
+            });
+
+    }
+
     render() {
         let profilePicture = profilePicturePlaceholder;
         if (this.props.user.profilePicture !== null) {
@@ -178,6 +198,20 @@ class Profile extends React.Component {
                             </Col>
                         </Row>
                         <p className="profile-bio">Member since: <Moment format="MMM DD, YYYY">{memberSince.toISOString()}</Moment></p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={{ size: '6'}}>
+                        <div className="levels_count">
+                            <p className="levels_count_number">{this.state.totalLevels}</p>
+                            <p className="levels_count_text">Levels Completed</p>
+                        </div>
+                    </Col>
+                    <Col xs={{ size: '6'}}>
+                        <div className="levels_count">
+                            <p className="levels_count_number">{this.state.levelsWon}</p>
+                            <p className="levels_count_text">Levels Won</p>
+                        </div>
                     </Col>
                 </Row>
             </Container>

@@ -13,6 +13,7 @@ let config = {
     getCurrentUserUrl: '/api/get-current-user-details',
     storeProfilePictureUrl: '/api/store-profile-picture',
     saveNameLastnameUrl: '/api/save-profile-name-lastname',
+    getLevelsStats: '/api/get-levels-stats',
 };
 
 export default config;
