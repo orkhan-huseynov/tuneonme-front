@@ -154,6 +154,7 @@ class App extends Component {
 
                 {mainContainer}
 
+
                 <Footer />
             </div>
         );

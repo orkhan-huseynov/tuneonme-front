@@ -80,6 +80,22 @@ class ProfileAdapter {
         }
     }
 
+    static async getLevelsStats() {
+        try {
+            const response = await apiController.get(config.getLevelsStats);
+            const responseData = response.data;
+
+            if (responseData.responseCode === 1) {
+                return Promise.resolve(responseData.responseContent);
+            } else {
+                console.log(responseData.responseContent);
+                return Promise.resolve(false);
+            }
+        } catch (error) {
+            return Promise.reject(error.response);
+        }
+    }
+
 }
 
 export default ProfileAdapter;
