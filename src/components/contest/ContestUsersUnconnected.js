@@ -3,11 +3,15 @@ import { Button, Container, Row, Col, Input, InputGroup, InputGroupAddon } from 
 import UserSmall from './UserSmall';
 import vs_icon from '../../images/vs_icon.png';
 
+// adapters
+import profileAdapter from '../../adapters/profileAdapter';
+
 class ContestUsersUnconnected extends React.Component {
     constructor(props){
         super(props);
 
         this.handleUserProfileClick = this.handleUserProfileClick.bind(this);
+        this.handleSearchStringChange = this.handleSearchStringChange.bind(this);
     }
 
     componentDidMount() {
@@ -18,13 +22,28 @@ class ContestUsersUnconnected extends React.Component {
         this.props.onUserProfileClick();
     }
 
+    handleSearchStringChange() {
+        const searchStringInput = document.getElementById('searchString');
+
+
+        if (searchStringInput !== null && searchStringInput.value != '') {
+            const searchString = encodeURIComponent(searchStringInput.value);
+
+            profileAdapter.getSearchSuggestions(searchString)
+                .then(foundProfiles => {
+
+                })
+                .catch(() => console.log('Error getting suggestions'))
+        }
+    }
+
     render() {
         return (
             <Container className="Container-contest-users">
                 <Row>
                     <Col>
                         <InputGroup className="InputGroup-member-search">
-                            <Input placeholder="id or name"/>
+                            <Input placeholder="id or name" name="searchString" id="searchString" onChange={this.handleSearchStringChange} />
                             <InputGroupAddon className="input-group-append" addonType="prepend">
                                 <span className="input-group-text">
                                     <Button className="btn-link btn-no-border btn-no-padding"><i className="fa fa-search" aria-hidden="true"></i></Button>

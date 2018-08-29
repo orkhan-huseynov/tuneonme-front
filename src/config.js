@@ -14,6 +14,7 @@ let config = {
     storeProfilePictureUrl: '/api/store-profile-picture',
     saveNameLastnameUrl: '/api/save-profile-name-lastname',
     getLevelsStats: '/api/get-levels-stats',
+    getSearchSuggestions: '/api/get-search-suggestions',
 };
 
 export default config;
