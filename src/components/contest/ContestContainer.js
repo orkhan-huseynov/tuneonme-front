@@ -2,6 +2,7 @@ import React from 'react';
 import ContestUsers from './ContestUsers';
 import Profile from './Profile';
 import { Container, Row, Col } from 'reactstrap';
+import Contest from './Contest';
 
 class ContestContainer extends React.Component {
 
@@ -34,7 +35,7 @@ class ContestContainer extends React.Component {
                         </Row>
                         <Row>
                             <Col>
-
+                                <Contest/>
                             </Col>
                         </Row>
                     </Container>

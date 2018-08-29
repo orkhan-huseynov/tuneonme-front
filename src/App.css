@@ -243,6 +243,33 @@ button {
 }
 /* Profile */
 
+/* Contest Levels */
+.contest_level_btn {
+    background-color: #b3b3b3;
+    border-color: #666;
+    color: #333;
+    width: 150px;
+    margin: 5px auto;
+}
+
+.contest_level_btn_active {
+    background-color: #00c071;
+    border-color: #bbb;
+    color: #fff;
+    width: 150px;
+    margin: 5px auto;
+}
+
+.contest_level_btn_new {
+    background-color: #fff;
+    border-color: #00c071;
+    color: #00c071;
+    width: 150px;
+    margin: 5px auto;
+    font-size: 20px;
+}
+/* Contest Levels */
+
 /* Footer */
 .App-footer {
   position: absolute;
