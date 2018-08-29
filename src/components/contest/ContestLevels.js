@@ -1,7 +1,5 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
-import Moment from 'react-moment';
-import profilePicturePlaceholder from '../../images/default_profile.png';
 
 // adapters
 
