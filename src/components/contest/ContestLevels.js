@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import LevelButton from './LevelButton';
 
 // adapters
 
@@ -18,49 +19,49 @@ class ContestLevels extends React.Component {
                 <Row>
                     <Col className="text-center">
                         <div>
-                            <Button className="contest_level_btn">Flaws</Button>
+                            <LevelButton status="passed" name="Flaws"></LevelButton>
                         </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="text-center">
                         <div>
-                            <Button className="contest_level_btn">Achievments</Button>
+                            <LevelButton status="passed" name="Achievments"></LevelButton>
                         </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="text-center">
                         <div>
-                            <Button className="contest_level_btn">Weirdnesses</Button>
+                            <LevelButton status="passed" name="Weirdnesses"></LevelButton>
                         </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="text-center">
                         <div>
-                            <Button className="contest_level_btn">Talents</Button>
+                            <LevelButton status="passed" name="Talents"></LevelButton>
                         </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="text-center">
                         <div>
-                            <Button className="contest_level_btn">Fears</Button>
+                            <LevelButton status="active" name="Fears"></LevelButton>
                         </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="text-center">
                         <div>
-                            <Button className="contest_level_btn_active">Lies</Button>
+                            <LevelButton status="inactive" name="Lies"></LevelButton>
                         </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="text-center">
                         <div>
-                            <Button className="contest_level_btn_new">+</Button>
+                            <LevelButton status="new" name="+"></LevelButton>
                         </div>
                     </Col>
                 </Row>

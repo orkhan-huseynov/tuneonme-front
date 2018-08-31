@@ -252,6 +252,14 @@ button {
     margin: 5px auto;
 }
 
+.contest_level_btn_inactive {
+    background-color: #fff;
+    border-color: #666;
+    color: #666;
+    width: 150px;
+    margin: 5px auto;
+}
+
 .contest_level_btn_active {
     background-color: #00c071;
     border-color: #bbb;
