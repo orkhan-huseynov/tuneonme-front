@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import LevelButton from './LevelButton';
+import levelAdapter from "../../adapters/levelAdapter";
 
 // adapters
 
@@ -10,6 +11,25 @@ class ContestLevels extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.loadLevels = this.loadLevels.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
+
+        this.state = {
+
+        };
+    }
+
+    loadLevels() {
+        levelAdapter.getLevels().then(
+            responseResult => {console.log(responseResult);
+            }).catch(
+                () => {console.log('Something went wrong');
+                });
+    }
+
+    componentDidMount() {
+        this.loadLevels();
     }
 
     render() {
