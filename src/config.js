@@ -15,6 +15,9 @@ let config = {
     saveNameLastnameUrl: '/api/save-profile-name-lastname',
     getLevelsStats: '/api/get-levels-stats',
     getSearchSuggestions: '/api/get-search-suggestions',
+
+    //Levels
+    getLevels: '/api/get-levels',
 };
 
 export default config;
