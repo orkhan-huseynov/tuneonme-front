@@ -124,6 +124,13 @@ button {
   margin-top: 20%;
 }
 
+.thumb-image-tiny {
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    border: 1px solid #00c071;
+}
 .thumb-image-small {
   margin: 0 auto;
   width: 50px;
@@ -277,6 +284,27 @@ button {
     font-size: 20px;
 }
 /* Contest Levels */
+
+/* Autosuggest */
+.highlight {
+    color: #28a745;
+}
+.react-autosuggest__suggestions-container {
+    position: absolute;
+    width: 100%;
+}
+.react-autosuggest__suggestions-container ul {
+    margin: 0;
+    padding: 0;
+}
+.react-autosuggest__suggestions-container li {
+    list-style: none;
+    padding: 4px 0;
+}
+.suggestion-content .suggestion-value {
+    margin-top: 3.5px;
+}
+/* Autosuggest */
 
 /* Footer */
 .App-footer {

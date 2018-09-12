@@ -14,7 +14,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        // LogInSingnUp methods
+        // LogInSignUp methods
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
         this.handleForgotPasswordClick = this.handleForgotPasswordClick.bind(this);
         this.handleAlreadyRegisteredClick = this.handleAlreadyRegisteredClick.bind(this);

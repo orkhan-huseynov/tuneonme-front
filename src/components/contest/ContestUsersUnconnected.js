@@ -1,8 +1,12 @@
 import React from 'react';
-import { Button, Container, Row, Col, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import { Container, Row, Col, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import UserSmall from './UserSmall';
 import vs_icon from '../../images/vs_icon.png';
 import AutoSuggest from 'react-autosuggest';
+import AutoSuggestHighlightMatch from 'autosuggest-highlight/match';
+import AutoSuggestHighlightParse from 'autosuggest-highlight/parse';
+import config from '../../config';
+import profilePicturePlaceholder from '../../images/default_profile.png';
 
 // adapters
 import profileAdapter from '../../adapters/profileAdapter';
@@ -28,6 +32,7 @@ class ContestUsersUnconnected extends React.Component {
 
         profileAdapter.getSearchSuggestions(searchString)
             .then(foundProfiles => {
+                console.log(foundProfiles);
                 this.setState({ suggestions: foundProfiles.profiles })
             })
             .catch(() => console.log('Error getting suggestions'))
@@ -60,9 +65,36 @@ class ContestUsersUnconnected extends React.Component {
         return `${suggestion.name} ${suggestion.lastname}`;
     }
 
-    renderSuggestion(suggestion) {
+    renderSuggestion(suggestion, { query }) {
+        const suggestionText = `${suggestion.name} ${suggestion.lastname}`;
+        const matches = AutoSuggestHighlightMatch(suggestionText, query);
+        const parts = AutoSuggestHighlightParse(suggestionText, matches);
+
+        const suggestionImage = (suggestion.profilePicture === null) ? profilePicturePlaceholder : `${config.storagePath}${suggestion.profilePicture}`;
+
         return (
-            <span>{suggestion.name} {suggestion.lastname}</span>
+            <div className={'suggestion-content'}>
+              <div className="name">
+                  <Row>
+                      <Col xs="2">
+                          <img className="thumb-image-tiny img-circle" src={suggestionImage} />
+                      </Col>
+                      <Col xs="10">
+                          <div className="suggestion-value">
+                            {
+                                parts.map((part, index) => {
+                                    const className = part.highlight ? 'highlight' : null;
+
+                                    return (
+                                        <span className={className} key={index}>{part.text}</span>
+                                    );
+                                })
+                            }
+                          </div>
+                    </Col>
+                  </Row>
+              </div>
+            </div>
         );
     }
 
